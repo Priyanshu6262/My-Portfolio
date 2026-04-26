@@ -13,6 +13,7 @@ const navLinks = [
   { label: 'Education', href: '#education' },
   { label: 'Certificates', href: '#certificates' },
   // { label: 'Achievements', href: '#achievements' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 function Navbar({ darkMode, setDarkMode }) {

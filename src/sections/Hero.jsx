@@ -124,8 +124,8 @@ function Hero() {
                 maxWidth: '600px',
               }}
             >
-              I am a passionate full-stack developer focused on building modern, scalable, and user-friendly web applications.</br>
-              I specialize in the MERN stack and enjoy creating clean, efficient, and responsive solutions.
+              I am a passionate full-stack developer focused on building modern, scalable, and user-friendly web applications.<br />
+              I specialize in the MERN stack and enjoy creating clean, efficient, and responsive solutions.<br />
               I am always eager to learn new technologies and improve my development skills.
             </p>
 
