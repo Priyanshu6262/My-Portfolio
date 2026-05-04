@@ -9,6 +9,7 @@ const categoryColors = {
   Frontend: { from: '#6366f1', to: '#8b5cf6', icon: '🎨' },
   Backend: { from: '#06b6d4', to: '#3b82f6', icon: '⚙️' },
   Database: { from: '#f59e0b', to: '#ef4444', icon: '🗄️' },
+  'Programming Languages': { from: '#10b981', to: '#059669', icon: '💻' },
 }
 
 function Skills() {
@@ -28,7 +29,7 @@ function Skills() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '1.5rem',
           }}
         >
@@ -101,6 +102,9 @@ function Skills() {
                         fontWeight: 500,
                         transition: 'all 0.3s ease',
                         cursor: 'default',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
                       }}
                       onMouseEnter={e => {
                         e.currentTarget.style.color = '#fff'
@@ -117,6 +121,13 @@ function Skills() {
                         e.currentTarget.style.boxShadow = 'none'
                       }}
                     >
+                      {skill.logo && (
+                        <img 
+                          src={skill.logo} 
+                          alt={`${skill.name} logo`} 
+                          style={{ width: '1.2rem', height: '1.2rem', objectFit: 'contain' }} 
+                        />
+                      )}
                       {skill.name}
                     </span>
                   ))}
@@ -138,7 +149,7 @@ function Skills() {
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          {['Git & GitHub', 'VS Code', 'Postman', 'Linux', 'Vercel', 'Render', 'Figma'].map(tool => (
+          {['Git & GitHub', 'VS Code', 'Postman', 'Linux', 'Vercel', 'Render',].map(tool => (
             <span
               key={tool}
               style={{

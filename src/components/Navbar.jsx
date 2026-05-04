@@ -126,7 +126,7 @@ function Navbar({ darkMode, setDarkMode }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             {/* GitHub */}
             <a
-              href="https://github.com/Priyanshu"
+              href="https://github.com/Priyanshu6262"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -144,7 +144,7 @@ function Navbar({ darkMode, setDarkMode }) {
 
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com/in/Priyanshu"
+              href="https://www.linkedin.com/in/priyanshu-kumar-b5bb9b259"
               target="_blank"
               rel="noopener noreferrer"
               style={{

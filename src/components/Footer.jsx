@@ -5,8 +5,8 @@ import { FiGithub, FiLinkedin, FiInstagram, FiHeart } from 'react-icons/fi'
  */
 function Footer() {
   const socialLinks = [
-    { icon: <FiGithub size={20} />, href: 'https://github.com/Priyanshu', label: 'GitHub' },
-    { icon: <FiLinkedin size={20} />, href: 'https://linkedin.com/in/Priyanshu', label: 'LinkedIn' },
+    { icon: <FiGithub size={20} />, href: 'https://github.com/Priyanshu6262', label: 'GitHub' },
+    { icon: <FiLinkedin size={20} />, href: 'https://www.linkedin.com/in/priyanshu-kumar-b5bb9b259', label: 'LinkedIn' },
     { icon: <FiInstagram size={20} />, href: 'https://instagram.com/Priyanshu', label: 'Instagram' },
   ]
 

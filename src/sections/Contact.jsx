@@ -184,8 +184,8 @@ function Contact() {
             {/* Social quick links */}
             <div style={{ display: 'flex', gap: '0.75rem' }}>
               {[
-                { icon: <FiGithub size={18} />, href: 'https://github.com/Priyanshu', label: 'GitHub' },
-                { icon: <FiLinkedin size={18} />, href: 'https://linkedin.com/in/Priyanshu', label: 'LinkedIn' },
+                { icon: <FiGithub size={18} />, href: 'https://github.com/Priyanshu6262', label: 'GitHub' },
+                { icon: <FiLinkedin size={18} />, href: 'https://www.linkedin.com/in/priyanshu-kumar-b5bb9b259', label: 'LinkedIn' },
               ].map(s => (
                 <a
                   key={s.label}
