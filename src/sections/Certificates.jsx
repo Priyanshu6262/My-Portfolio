@@ -24,9 +24,10 @@ function Certificates() {
         {/* Grid */}
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: '1.5rem',
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '2rem',
           }}
         >
           {certificates.map((cert, idx) => (
@@ -42,6 +43,8 @@ function Certificates() {
                 textDecoration: 'none',
                 display: 'flex',
                 flexDirection: 'column',
+                width: '100%',
+                maxWidth: '350px',
               }}
               data-aos="zoom-in"
               data-aos-delay={idx * 100}

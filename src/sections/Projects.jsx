@@ -1,11 +1,12 @@
-import { FiExternalLink, FiGithub } from 'react-icons/fi'
+import { useState, useEffect } from 'react'
+import { FiExternalLink, FiGithub, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { projects } from '../data/data'
 
 /**
- * Projects.jsx — Responsive card grid with image, tags, live and github links.
+ * Projects.jsx — Responsive card slider with image, tags, live and github links.
  */
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project }) {
   return (
     <div
       className="glass card-hover"
@@ -14,9 +15,8 @@ function ProjectCard({ project, index }) {
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
+        height: '100%',
       }}
-      data-aos="fade-up"
-      data-aos-delay={index * 80}
     >
       {/* Image */}
       <div style={{ position: 'relative', overflow: 'hidden', height: '200px' }}>
@@ -123,6 +123,41 @@ function ProjectCard({ project, index }) {
 }
 
 function Projects() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [itemsPerPage, setItemsPerPage] = useState(3)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(1)
+      } else if (window.innerWidth < 1024) {
+        setItemsPerPage(2)
+      } else {
+        setItemsPerPage(3)
+      }
+    }
+    
+    // Initial call
+    handleResize()
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const totalPages = Math.ceil(projects.length / itemsPerPage)
+
+  const handlePrev = () => {
+    setCurrentIndex(prev => (prev === 0 ? totalPages - 1 : prev - 1))
+  }
+
+  const handleNext = () => {
+    setCurrentIndex(prev => (prev === totalPages - 1 ? 0 : prev + 1))
+  }
+
+  const goToPage = (pageIndex) => {
+    setCurrentIndex(pageIndex)
+  }
+
   return (
     <section
       id="projects"
@@ -139,17 +174,80 @@ function Projects() {
         </p>
         <div className="section-divider" data-aos="fade-up" data-aos-delay="80" />
 
-        {/* Cards grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '1.5rem',
-          }}
-        >
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
+        {/* Carousel Container */}
+        <div style={{ position: 'relative', marginTop: '2rem' }} data-aos="fade-up" data-aos-delay="100">
+          
+          {/* Controls */}
+          <button 
+            onClick={handlePrev}
+            style={{ 
+              position: 'absolute', left: '-15px', top: '50%', transform: 'translateY(-50%)', zIndex: 10,
+              width: '45px', height: '45px', borderRadius: '50%', background: 'var(--accent)', color: '#fff',
+              border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.3)', transition: 'transform 0.2s ease, background 0.2s ease'
+            }}
+            onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)'}
+            onMouseLeave={e => e.currentTarget.style.transform = 'translateY(-50%) scale(1)'}
+            aria-label="Previous Projects"
+          >
+            <FiChevronLeft size={28} />
+          </button>
+          
+          <button 
+            onClick={handleNext}
+            style={{ 
+              position: 'absolute', right: '-15px', top: '50%', transform: 'translateY(-50%)', zIndex: 10,
+              width: '45px', height: '45px', borderRadius: '50%', background: 'var(--accent)', color: '#fff',
+              border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.3)', transition: 'transform 0.2s ease, background 0.2s ease'
+            }}
+            onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)'}
+            onMouseLeave={e => e.currentTarget.style.transform = 'translateY(-50%) scale(1)'}
+            aria-label="Next Projects"
+          >
+            <FiChevronRight size={28} />
+          </button>
+
+          {/* Carousel Track Wrapper */}
+          <div style={{ overflow: 'hidden', padding: '1rem 0' }}>
+            <div
+              style={{
+                display: 'flex',
+                transition: 'transform 0.5s ease-in-out',
+                transform: `translateX(-${currentIndex * 100}%)`,
+              }}
+            >
+              {projects.map((project) => (
+                <div 
+                  key={project.id} 
+                  style={{ 
+                    minWidth: `${100 / itemsPerPage}%`, 
+                    padding: '0 1rem',
+                    boxSizing: 'border-box'
+                  }}
+                >
+                  <ProjectCard project={project} />
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Pagination Dots */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', marginTop: '2rem' }}>
+            {Array.from({ length: totalPages }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToPage(idx)}
+                style={{
+                  width: '12px', height: '12px', borderRadius: '50%', border: 'none', cursor: 'pointer',
+                  background: currentIndex === idx ? 'var(--accent)' : 'rgba(99,102,241,0.2)',
+                  boxShadow: currentIndex === idx ? '0 0 10px var(--accent)' : 'none',
+                  transition: 'all 0.3s ease'
+                }}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
