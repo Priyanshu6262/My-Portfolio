@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { FiMail, FiPhone, FiSend, FiMapPin, FiGithub, FiLinkedin } from 'react-icons/fi'
+import { FiMail, FiPhone, FiSend, FiMapPin, FiGithub, FiLinkedin, FiPhoneCall } from 'react-icons/fi'
+import { FaWhatsapp } from 'react-icons/fa'
 
 /**
  * Contact.jsx — Contact info + EmailJS-ready contact form.
@@ -11,14 +12,15 @@ const contactInfo = [
   {
     icon: <FiMail size={20} />,
     label: 'Email',
-    value: 'priyanshu@email.com',
-    href: 'mailto:priyanshu@email.com',
+    value: 'priyanshutrp5.0@gmail.com',
+    href: 'mailto:priyanshutrp5.0@gmail.com',
   },
   {
     icon: <FiPhone size={20} />,
     label: 'Phone',
-    value: '+91 98765 43210',
-    href: 'tel:+919876543210',
+    value: '+91 6206248510',
+    href: 'tel:+916206248510',
+    isPhone: true,
   },
   {
     icon: <FiMapPin size={20} />,
@@ -31,6 +33,28 @@ const contactInfo = [
 function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | sending | success | error
+  const [copied, setCopied] = useState(false)
+
+  const rawPhone = "916206248510"
+
+  const handleCallClick = async () => {
+    try {
+      await navigator.clipboard.writeText('+91 6206248510')
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+      
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+      if (isMobile) {
+        window.location.href = 'tel:+916206248510'
+      }
+    } catch (err) {
+      console.error('Failed to copy', err)
+    }
+  }
+
+  const handleWhatsAppClick = () => {
+    window.open(`https://wa.me/${rawPhone}`, '_blank')
+  }
 
   const handleChange = (e) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -156,7 +180,32 @@ function Contact() {
                     <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                       {info.label}
                     </p>
-                    {info.href ? (
+                    {info.isPhone ? (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.2rem' }}>
+                        <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.9rem' }}>
+                          {info.value}
+                        </span>
+                        <button 
+                          onClick={handleCallClick}
+                          style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '0.4rem', cursor: 'pointer', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.4rem', transition: 'all 0.2s' }}
+                          title="Call / Copy"
+                          onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = '#fff' }}
+                          onMouseLeave={e => { e.currentTarget.style.background = 'rgba(99,102,241,0.1)'; e.currentTarget.style.color = 'var(--accent)' }}
+                        >
+                          <FiPhoneCall size={14} />
+                        </button>
+                        <button 
+                          onClick={handleWhatsAppClick}
+                          style={{ background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.2)', borderRadius: '0.4rem', cursor: 'pointer', color: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.4rem', transition: 'all 0.2s' }}
+                          title="WhatsApp"
+                          onMouseEnter={e => { e.currentTarget.style.background = '#25D366'; e.currentTarget.style.color = '#fff' }}
+                          onMouseLeave={e => { e.currentTarget.style.background = 'rgba(37,211,102,0.1)'; e.currentTarget.style.color = '#25D366' }}
+                        >
+                          <FaWhatsapp size={15} />
+                        </button>
+                        {copied && <span style={{ fontSize: '0.75rem', color: '#22c55e', fontWeight: 600 }}>Copied!</span>}
+                      </div>
+                    ) : info.href ? (
                       <a
                         href={info.href}
                         style={{
