@@ -42,7 +42,7 @@ function Contact() {
       await navigator.clipboard.writeText('+91 6206248510')
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
-      
+
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
       if (isMobile) {
         window.location.href = 'tel:+916206248510'
@@ -185,7 +185,7 @@ function Contact() {
                         <span style={{ color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.9rem' }}>
                           {info.value}
                         </span>
-                        <button 
+                        <button
                           onClick={handleCallClick}
                           style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '0.4rem', cursor: 'pointer', color: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.4rem', transition: 'all 0.2s' }}
                           title="Call / Copy"
@@ -194,7 +194,7 @@ function Contact() {
                         >
                           <FiPhoneCall size={14} />
                         </button>
-                        <button 
+                        <button
                           onClick={handleWhatsAppClick}
                           style={{ background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.2)', borderRadius: '0.4rem', cursor: 'pointer', color: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.4rem', transition: 'all 0.2s' }}
                           title="WhatsApp"
@@ -272,7 +272,7 @@ function Contact() {
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="Priyanshu"
                   required
                   className="form-input"
                 />
@@ -292,7 +292,7 @@ function Contact() {
                   name="email"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder="priyanshu@example.com"
                   required
                   className="form-input"
                 />
@@ -311,7 +311,7 @@ function Contact() {
                   name="message"
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Tell me about your project..."
+                  placeholder="Write your message..."
                   required
                   rows={5}
                   className="form-input"
