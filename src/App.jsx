@@ -21,7 +21,7 @@ import Footer from './components/Footer'
  */
 function App() {
   const [darkMode, setDarkMode] = useState(true)
-  const [loading, setLoading] = useState(!sessionStorage.getItem('hasVisited'))
+  const [loading, setLoading] = useState(true)
 
   // Initialize AOS on mount
   useEffect(() => {
@@ -48,8 +48,7 @@ function App() {
     if (loading) {
       const timer = setTimeout(() => {
         setLoading(false)
-        sessionStorage.setItem('hasVisited', 'true')
-      }, 1800)
+      }, 500)
       return () => clearTimeout(timer)
     }
   }, [loading])
