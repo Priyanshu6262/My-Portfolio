@@ -19,7 +19,7 @@ function ProjectCard({ project }) {
       }}
     >
       {/* Image */}
-      <div style={{ position: 'relative', overflow: 'hidden', height: '200px' }}>
+      <a href={project.live} target="_blank" rel="noopener noreferrer" style={{ display: 'block', position: 'relative', overflow: 'hidden', height: '200px' }}>
         <img
           src={project.image}
           alt={project.title}
@@ -41,7 +41,7 @@ function ProjectCard({ project }) {
             pointerEvents: 'none',
           }}
         />
-      </div>
+      </a>
 
       {/* Content */}
       <div style={{ padding: '1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>

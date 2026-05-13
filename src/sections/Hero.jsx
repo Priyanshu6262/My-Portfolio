@@ -138,7 +138,7 @@ function Hero() {
               }}
               className="hero-buttons"
             >
-              <a href="/resume.pdf" download className="btn-primary" style={{ padding: '0.875rem 2rem' }}>
+              <a href="https://drive.google.com/file/d/1OynSVAApbubvYeQyHhwazaHzChW_lE4m/view?usp=sharing" target="_blank" download className="btn-primary" style={{ padding: '0.875rem 2rem' }}>
                 <FiDownload size={18} /> Download Resume
               </a>
               <button

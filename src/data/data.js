@@ -3,6 +3,10 @@
  * Edit this file to update all sections without touching components.
  */
 
+import footflexImg from '../assets/footflex.png';
+import aiResumeMakerImg from '../assets/AI Resume Maker.png';
+import meetzyImg from '../assets/Meetzy.png';
+
 // ─── SKILLS ──────────────────────────────────────────────────────────────────
 export const skills = {
   Frontend: [
@@ -37,8 +41,8 @@ export const projects = [
     title: 'FootFlex E-Commerce',
     description: 'Full-stack shoe e-commerce platform with JWT authentication, cart system, admin dashboard, and integrated AI chatbot for enhanced user interaction.',
     tags: ['React', 'Node.js', 'Express.js', 'MongoDB', 'AI API'],
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop',
-    live: '#',
+    image: footflexImg,
+    live: 'https://foo-flex-frontend.vercel.app/',
     github: 'https://github.com/Priyanshu6262/FootFlex.git',
   },
   {
@@ -46,8 +50,8 @@ export const projects = [
     title: 'AI Resume Maker',
     description: 'AI-powered resume builder application that generates professional resumes with customizable templates, real-time editing, and download functionality.',
     tags: ['AI API', 'React', 'Node.js', 'Express.js', 'MongoDB'],
-    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600&auto=format&fit=crop',
-    live: '#',
+    image: aiResumeMakerImg,
+    live: 'https://ai-resume-maker-beta-beryl.vercel.app/',
     github: 'https://github.com/Priyanshu6262/AI-Resume-maker.git',
   },
   {
@@ -55,8 +59,8 @@ export const projects = [
     title: 'Meetzy – Video Chat Application',
     description: 'Real-time video chat application using MERN stack and WebRTC with meeting creation, join via code, and peer-to-peer communication support.',
     tags: ['MERN', 'WebRTC', 'Socket.io'],
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&auto=format&fit=crop',
-    live: '#',
+    image: meetzyImg,
+    live: 'https://meetzy-frontend-9hi4.vercel.app/',
     github: 'https://github.com/Priyanshu6262/Meetzy-Video-Chat-Application.git',
   },
   {
